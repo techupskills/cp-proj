@@ -1,4 +1,4 @@
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/REPO_OWNER/REPO_NAME?quickstart=1)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/techupskills/cp-proj?quickstart=1)
 > Replace `REPO_OWNER/REPO_NAME` with your repository path once you push this project to GitHub.
 
 # AI Capstone Project
