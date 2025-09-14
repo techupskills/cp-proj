@@ -1,0 +1,1 @@
+Welcome to your AI Capstone. Minimal RAG + Agent + MCP demo.

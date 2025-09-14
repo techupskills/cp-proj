@@ -1,6 +1,8 @@
 import os
+from pathlib import Path
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import RedirectResponse
 from dotenv import load_dotenv
 from .agent import Agent
 from .rag import ingest_text, list_docs
@@ -8,12 +10,21 @@ from .rag import ingest_text, list_docs
 load_dotenv()
 
 app = FastAPI(title="AI Capstone API")
-app.mount("/", StaticFiles(directory="web", html=True), name="web")
+
+ROOT = Path(__file__).resolve().parents[1]
+WEB_DIR = ROOT / "web"
+
+app.mount("/ui", StaticFiles(directory=str(WEB_DIR), html=True), name="web")
+
+@app.get("/")
+async def root_redirect():
+    return RedirectResponse(url="/ui/")
+
 agent = Agent()
 
 @app.get("/health")
 async def health():
-    return {"status":"ok"}
+    return {"status": "ok"}
 
 @app.get("/docs")
 async def docs_list():

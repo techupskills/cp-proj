@@ -1,4 +1,5 @@
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/techupskills/cp-proj?quickstart=1)
+[![CI](https://github.com/REPO_OWNER/REPO_NAME/actions/workflows/ci.yml/badge.svg)](https://github.com/REPO_OWNER/REPO_NAME/actions/workflows/ci.yml)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/REPO_OWNER/REPO_NAME?quickstart=1)
 > Replace `REPO_OWNER/REPO_NAME` with your repository path once you push this project to GitHub.
 
 # AI Capstone Project
@@ -12,8 +13,8 @@ flowchart LR
     U[User] --> UI[Web UI]
     UI --> API[FastAPI Backend]
     API --> AG[Agent]
-    AG -->|Prompt and Context| LLM[Ollama Model]
-    AG -->|Retrieve| VS[Vector Store Chroma]
+    AG -->|Prompt+Context| LLM[Ollama Model]
+    AG -->|Retrieve| VS[Vector Store (Chroma)]
     VS --> DOCS[Local Docs]
     AG -->|Tools via MCP| MCP[MCP Client]
     MCP --> SRV[FastMCP Server]
@@ -35,16 +36,10 @@ Open http://localhost:8080
 ## Running in GitHub Codespaces
 1. Push this repo to GitHub and click **Code → Create codespace on main**.
 2. The devcontainer will install Ollama and Python deps, then auto-start:
-   - **8080** → API + Web UI (chat)
+   - **8080** → API + Web UI (chat) at `/ui/`
    - **8000** → MCP endpoint (/mcp)
 3. Manual restart:
    - `bash .devcontainer/bootstrap.sh`
    - Or VS Code **Tasks**: “Start: MCP server”, “Start: API”
 
 Logs: `/workspaces/logs/`
-
-## Endpoints
-POST /ingest  (upload .txt/.md)
-GET  /docs
-POST /query   {"message":"..."}
-GET  /health
