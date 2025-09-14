@@ -1,0 +1,50 @@
+{
+  "name": "AI Capstone (Codespaces: FastAPI + MCP + Ollama)",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "postStartCommand": "bash .devcontainer/bootstrap.sh",
+  "forwardPorts": [
+    8000,
+    8080,
+    11434
+  ],
+  "portsAttributes": {
+    "8000": {
+      "label": "MCP Server (/mcp)",
+      "onAutoForward": "openBrowser"
+    },
+    "8080": {
+      "label": "Capstone API + UI",
+      "onAutoForward": "openBrowser"
+    },
+    "11434": {
+      "label": "Ollama",
+      "onAutoForward": "ignore"
+    }
+  },
+  "containerEnv": {
+    "PYTHONUNBUFFERED": "1",
+    "OLLAMA_BASE_URL": "http://localhost:11434",
+    "OLLAMA_MODEL": "llama3.2",
+    "OLLAMA_EMBED_MODEL": "nomic-embed-text",
+    "MCP_SERVER_URL": "http://localhost:8000/mcp",
+    "API_HOST": "0.0.0.0",
+    "API_PORT": "8080"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-azuretools.vscode-docker",
+        "humao.rest-client"
+      ]
+    }
+  }
+}
