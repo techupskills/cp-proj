@@ -26,7 +26,7 @@ agent = Agent()
 async def health():
     return {"status": "ok"}
 
-@app.get("/docs")
+@app.get("/documents")
 async def docs_list():
     return list_docs()
 

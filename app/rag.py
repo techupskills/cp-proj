@@ -41,10 +41,9 @@ def list_docs() -> List[str]:
         metas = collection.get(include=["metadatas"])
         seen = []
         for m in metas.get("metadatas", []):
-            for mm in m:
-                did = mm.get("doc_id")
-                if did and did not in seen:
-                    seen.append(did)
+            did = m.get("doc_id")
+            if did and did not in seen:
+                seen.append(did)
         return seen
     except Exception:
         return []

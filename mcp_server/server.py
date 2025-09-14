@@ -6,7 +6,7 @@ SERVICE_NAME = os.getenv("MCP_SERVICE_NAME", "CapstoneMCP")
 BIND_HOST = os.getenv("MCP_HOST", "0.0.0.0")
 BIND_PORT = int(os.getenv("MCP_PORT", "8000"))
 
-server = FastMCP(service_name=SERVICE_NAME)
+server = FastMCP()
 
 @server.tool()
 def calc(expression: str):
@@ -28,4 +28,4 @@ def whoami():
     return {"service": SERVICE_NAME}
 
 if __name__ == "__main__":
-    server.run_http(host=BIND_HOST, port=BIND_PORT, endpoint="/mcp")
+    server.run(transport="streamable-http")
