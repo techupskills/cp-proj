@@ -13,7 +13,9 @@ except Exception:
     HAVE_MCP = False
 
 SYSTEM_PROMPT = (
-    "You are an enterprise assistant. Use the provided CONTEXT when helpful. "
+    "You are an enterprise assistant with access to a knowledge base. "
+    "When responding to questions, ALWAYS use the provided CONTEXT section to answer questions about documents. "
+    "If CONTEXT is provided, base your answer primarily on that information. "
     "If tools are available and needed, you may request a tool call by emitting a JSON object on a single line: "
     '{"tool":"calc","input":{"expression":"2+2"}} or {"tool":"ping","input":{}}. '
     "Otherwise, answer directly and be concise."
